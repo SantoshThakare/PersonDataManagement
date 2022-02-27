@@ -16,7 +16,8 @@ namespace PersonDataManagement_LambdaExp
                 AddPersonDetailsToList(list);
                 Console.WriteLine("Choose an option \n1. Retrieve top 2 Person Age Less Than 60" +
                                              "\n2. Retrieve Person Age Between 13 To 18" +
-                                             "\n3. Average Age in the list");
+                                             "\n3. Average Age in the list" +
+                                              "\n4. check specific name present in the list");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -28,6 +29,9 @@ namespace PersonDataManagement_LambdaExp
                         break;
                     case 3:
                         GetAverageAgeInTheList(list);
+                        break;
+                    case 4:
+                        CheckSpecificNamePresent(list, "Rahul");
                         break;
                     default:
                         Console.WriteLine("Please choose correct option");
@@ -47,7 +51,7 @@ namespace PersonDataManagement_LambdaExp
             list.Add(new Person() { ssn = 4, name = "Jonny", address = "Maharastra", age = 15 });
             list.Add(new Person() { ssn = 5, name = "Sachin", address = "Maharastra", age = 61 });
             list.Add(new Person() { ssn = 6, name = "Pandya", address = "Maharastra", age = 35 });
-            list.Add(new Person() { ssn = 7, name = "Rahul", address = "Karnataka", age = 63 });
+            list.Add(new Person() { ssn = 1, name = "Rahul", address = "Karnataka", age = 63 });
 
         }
         public static void IterateOverList(List<Person> list)
@@ -76,6 +80,14 @@ namespace PersonDataManagement_LambdaExp
         {
             double averageAge = list.Average<Person>(person => person.age);
             Console.WriteLine("\nAverage age in the list is: " + averageAge);
+        }
+        public static void CheckSpecificNamePresent(List<Person> list, string name)
+        {
+            Person personPresent = list.Find(person => person.name == name);
+            if (personPresent != null)
+                Console.WriteLine("\n" + personPresent);
+            else
+                Console.WriteLine("Person not Exist in the list");
         }
     }
 }
