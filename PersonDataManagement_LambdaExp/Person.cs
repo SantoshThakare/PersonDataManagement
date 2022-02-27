@@ -14,7 +14,7 @@ namespace PersonDataManagement_LambdaExp
         public int age { get; set; }
         public override string ToString()
         {
-            return $"SSN: {ssn}, Name: {name}, Address: {address}, Age: {age}";
+            return $"SSN: {ssn}, Name:  {name}, Address: {address}, Age: {age}";
         }
 
     }

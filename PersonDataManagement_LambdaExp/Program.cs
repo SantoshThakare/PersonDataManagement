@@ -15,7 +15,8 @@ namespace PersonDataManagement_LambdaExp
                 List<Person> list = new List<Person>();
                 AddPersonDetailsToList(list);
                 Console.WriteLine("Choose an option \n1. Retrieve top 2 Person Age Less Than 60" +
-                                             "\n2. Retrieve Person Age Between 13 To 18");
+                                             "\n2. Retrieve Person Age Between 13 To 18" +
+                                             "\n3. Average Age in the list");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -24,6 +25,9 @@ namespace PersonDataManagement_LambdaExp
                         break;
                     case 2:
                         RetrievePersonAgeBetween13To18(list);
+                        break;
+                    case 3:
+                        GetAverageAgeInTheList(list);
                         break;
                     default:
                         Console.WriteLine("Please choose correct option");
@@ -67,6 +71,11 @@ namespace PersonDataManagement_LambdaExp
             Console.WriteLine("\nlist for Age between 13 to 18");
             IterateOverList(teenage);
             Console.ReadLine();
+        }
+        public static void GetAverageAgeInTheList(List<Person> list)
+        {
+            double averageAge = list.Average<Person>(person => person.age);
+            Console.WriteLine("\nAverage age in the list is: " + averageAge);
         }
     }
 }
