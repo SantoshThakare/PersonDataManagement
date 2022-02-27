@@ -17,7 +17,8 @@ namespace PersonDataManagement_LambdaExp
                 Console.WriteLine("Choose an option \n1. Retrieve top 2 Person Age Less Than 60" +
                                              "\n2. Retrieve Person Age Between 13 To 18" +
                                              "\n3. Average Age in the list" +
-                                              "\n4. check specific name present in the list");
+                                              "\n4. check specific name present in the list" +
+                                              "\n5. Skip Person Age Less Than 60");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -32,6 +33,9 @@ namespace PersonDataManagement_LambdaExp
                         break;
                     case 4:
                         CheckSpecificNamePresent(list, "Rahul");
+                        break;
+                    case 5:
+                        SkipPersonAgeLessThan60(list);
                         break;
                     default:
                         Console.WriteLine("Please choose correct option");
@@ -51,7 +55,7 @@ namespace PersonDataManagement_LambdaExp
             list.Add(new Person() { ssn = 4, name = "Jonny", address = "Maharastra", age = 15 });
             list.Add(new Person() { ssn = 5, name = "Sachin", address = "Maharastra", age = 61 });
             list.Add(new Person() { ssn = 6, name = "Pandya", address = "Maharastra", age = 35 });
-            list.Add(new Person() { ssn = 1, name = "Rahul", address = "Karnataka", age = 63 });
+            list.Add(new Person() { ssn = 7, name = "Rahul", address = "Karnataka", age = 63 });
 
         }
         public static void IterateOverList(List<Person> list)
@@ -88,6 +92,12 @@ namespace PersonDataManagement_LambdaExp
                 Console.WriteLine("\n" + personPresent);
             else
                 Console.WriteLine("Person not Exist in the list");
+        }
+        public static void SkipPersonAgeLessThan60(List<Person> list)
+        {
+            List<Person> PersonResult = list.FindAll(person => person.age > 60);
+            Console.WriteLine("\npersons with Age greater than 60 are: ");
+            IterateOverList(PersonResult);
         }
     }
 }
